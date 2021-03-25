@@ -1,13 +1,17 @@
 import React from 'react'
 import './App.css';
-import DataTable from './components/Table';
+import ScrollIndicator from './components/scroll-indicator';
+// import DataTable from './components/Table';
 // import OTPBox from './components/otp-screen';
+// import Scroll from './components/Scroll/App';
 
 function App() {
 
   return (
     <div className="App">
-      <DataTable />
+      <ScrollIndicator />
+      {/* <Scroll /> */}
+      {/* <DataTable /> */}
       {/* <OTPBox /> */}
     </div>
   );

@@ -80,7 +80,7 @@
   border-radius: 100%;
   background: #8b0000;
   color: #fff;
-  z-index: 1;
+  /* z-index: 1; */
 }
 .scroll-to-top .icon {
   margin-top: 10px;

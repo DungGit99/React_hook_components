@@ -15,7 +15,9 @@ const DataTable = () => {
   const [comments, setComments] = useState([]);
   const [totalItems, setTotalItems] = useState(0); // tổng item
   const [currentPage, setCurrentPage] = useState(1); // page hiện tại 
-  const ITEMS_PER_PAGE = 50 // 50 item trên 1 trang 
+  const ITEMS_PER_PAGE = 50; // 50 item trên 1 trang 
+  const [search, setSearch] = useState("");
+  const [sorting, setSorting] = useState({ field: "", order: "" })
 
   useEffect(() => {
     const getData = () => {
@@ -30,12 +32,16 @@ const DataTable = () => {
 
   const commentsData = useMemo(() => {
     let computedComments = comments
+    if (search) {
+      computedComments = computedComments.filter(comment =>
+        comment.name.toLowerCase().includes(search.toLowerCase()) || comment.email.toLowerCase().includes(search.toLowerCase()))
+    }
     setTotalItems(computedComments.length);
     return computedComments.slice(
       (currentPage - 1) * ITEMS_PER_PAGE,
       (currentPage - 1) * ITEMS_PER_PAGE + ITEMS_PER_PAGE
     );
-  }, [comments, currentPage])
+  }, [comments, currentPage, search, sorting])
 
   return (
     <div className="row w-100">
@@ -51,10 +57,10 @@ const DataTable = () => {
           </div>
           <div className="col-md-6 d-flex flex-row-reverse">
             <Search
-            // onSearch={value => {
-            //   setSearch(value);
-            //   setCurrentPage(1);
-            // }}
+              onSearch={(value) => {
+                setSearch(value);
+                setCurrentPage(1);
+              }}
             />
           </div>
         </div>
@@ -62,9 +68,7 @@ const DataTable = () => {
         <table className="table table-striped">
           <TableHeader
             headers={headers}
-          // onSorting={(field, order) =>
-          //   setSorting({ field, order })
-          // }
+            onSorting={(field, order) => setSorting(field, order)}
           />
           <tbody>
             {commentsData.map(comment => (

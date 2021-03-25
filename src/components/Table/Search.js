@@ -2,7 +2,10 @@ import React, { useState } from "react";
 
 const Search = ({ onSearch }) => {
   const [search, setSearch] = useState("");
-
+  const onInputChange = value => {
+    setSearch(value);
+    onSearch(value);
+  }
 
   return (
     <input
@@ -10,8 +13,8 @@ const Search = ({ onSearch }) => {
       className="form-control"
       style={{ width: "240px" }}
       placeholder="Search"
-    // value={search}
-    // onChange={e => onInputChange(e.target.value)}
+      value={search}
+      onChange={e => onInputChange(e.target.value)}
     />
   );
 };
