@@ -1,0 +1,45 @@
+main {
+  width: 90vh;
+  max-width: 600px;
+  margin: 5rem auto;
+}
+.title h2 {
+  text-align: center;
+  text-transform: capitalize;
+  position: relative;
+  line-height: 60px;
+ 
+}
+.title h2::after {
+  content: '';
+  position: absolute;
+  width: 100px;
+  height: 5px;
+  bottom: 0;
+  left: 50%;
+  background: red;
+  transform: translateX(-50%);
+  border-radius: 5px;
+}
+.single-tour {
+  margin: 2rem 0;
+  box-shadow: 0 5px 15px rgba(0,0,0,.1);
+}
+.single-tour footer {
+  padding: 1.5rem 2rem;
+}
+.single-tour img {
+  width: 100%;
+}
+.tour-info {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 1.5rem;
+}
+.single-tour button { 
+  background: transparent;
+  border-color: transparent;
+  color: #49a6e9;
+  outline: none;
+}
